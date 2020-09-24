@@ -143,6 +143,12 @@ function MarketSelector({ markets, placeholder, setHandleDeprecated }) {
   const extractBase = (a) => a.split('/')[0];
   const extractQuote = (a) => a.split('/')[1];
 
+  const defaultMarketAddress =  markets.find(
+    (proposedMarket) =>
+      proposedMarket.name === 'ETH/USDT',
+  )
+  ?.address?.toBase58()
+
   return (
     <Select
       showSearch
@@ -152,12 +158,13 @@ function MarketSelector({ markets, placeholder, setHandleDeprecated }) {
       optionFilterProp="name"
       onSelect={onSetMarketAddress}
       listHeight={400}
-      value={markets
-        .find(
-          (proposedMarket) =>
-            market?.address && proposedMarket.address.equals(market.address),
-        )
-        ?.address?.toBase58()}
+      value={defaultMarketAddress}
+      // {markets
+      //   .find(
+      //     (proposedMarket) =>
+      //       market?.address && proposedMarket.address.equals(market.address),
+      //   )
+      //   ?.address?.toBase58()}
       filterOption={(input, option) =>
         option.name.toLowerCase().indexOf(input.toLowerCase()) >= 0
       }
