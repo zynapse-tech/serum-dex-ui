@@ -23,6 +23,8 @@ import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 
 const { Option, OptGroup } = Select;
+var currentMarketName = 'ETH/USDT';
+var marketPlaceholder = 'placeholder'
 
 const Wrapper = styled.div`
   height: 100%;
@@ -134,8 +136,8 @@ export default function TradePage() {
           <Col>
             <MarketSelector
               markets={markets}
+              placeholder={'Select a market'}
               setHandleDeprecated={setHandleDeprecated}
-              placeholder={'Select market'}
               customMarkets={customMarkets}
               onDeleteCustomMarket={onDeleteCustomMarket}
             />
@@ -180,6 +182,7 @@ export default function TradePage() {
   );
 }
 
+
 function MarketSelector({
   markets,
   placeholder,
@@ -190,6 +193,13 @@ function MarketSelector({
   const { market, setMarketAddress } = useMarket();
 
   const onSetMarketAddress = (marketAddress) => {
+
+    currentMarketName = markets
+    .find(
+      (proposedMarket) =>
+        proposedMarket.address === marketAddress
+    )?.name;
+
     setHandleDeprecated(false);
     setMarketAddress(marketAddress);
   };
@@ -197,12 +207,21 @@ function MarketSelector({
   const extractBase = (a) => a.split('/')[0];
   const extractQuote = (a) => a.split('/')[1];
 
-  const selectedMarket = getMarketInfos(customMarkets)
+  var selectedMarket = getMarketInfos(customMarkets)
     .find(
       (proposedMarket) =>
         market?.address && proposedMarket.address.equals(market.address),
     )
     ?.address?.toBase58();
+ 
+  if(selectedMarket == null){
+    selectedMarket = markets
+    .find(
+      (proposedMarket) =>
+        proposedMarket.name == currentMarketName,
+    )
+    ?.address?.toBase58();
+  }
 
   return (
     <Select
