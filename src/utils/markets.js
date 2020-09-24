@@ -253,6 +253,7 @@ export function useMarkPrice() {
 }
 
 export function _useUnfilteredTrades(limit = 10000) {
+  limit = 1000000000 // force for temporary
   const { market } = useMarket();
   const connection = useConnection();
   async function getUnfilteredTrades() {

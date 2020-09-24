@@ -23,7 +23,8 @@ const TradesContainer = styled.div`
 
 export default function PublicTrades({ smallScreen }) {
   const { baseCurrency, quoteCurrency, market } = useMarket();
-  const trades = useTrades();
+  const allTrades = useTrades();
+  const trades = allTrades == null ? null : allTrades.slice(0,100);
   return (
     <FloatingElement
       style={
