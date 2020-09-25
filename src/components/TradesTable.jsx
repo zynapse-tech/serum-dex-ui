@@ -18,7 +18,7 @@ const TradesContainer = styled.div`
   height: calc(100% - 75px);
   margin-right: -20px;
   padding-right: 5px;
-  overflow-y: scroll;
+  overflow-y: scroll; 
 `;
 
 export default function PublicTrades({ smallScreen }) {

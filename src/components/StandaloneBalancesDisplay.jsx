@@ -56,7 +56,7 @@ export default function StandaloneBalancesDisplay() {
   }
 
   return (
-    <FloatingElement style={{ flex: 1, paddingTop: 10 }}>
+    <FloatingElement style={{ flex: 1, paddingTop: 10, marginBottom: 0 }}>
       {[
         [baseCurrency, baseCurrencyBalances],
         [quoteCurrency, quoteCurrencyBalances],

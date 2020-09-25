@@ -21,6 +21,7 @@ import {
 } from '@ant-design/icons';
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
+import TradingViewWidgetFTX from '../components/TradingViewWidgetFTX';
 
 const { Option, OptGroup } = Select;
 var currentMarketName = 'ETH/USDT';
@@ -324,8 +325,9 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
         flexWrap: 'nowrap',
       }}
     >
-      <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
-        <UserInfoTable />
+      <Col flex="auto" style={{display: 'flex', flexDirection: 'column' }}>
+        <div style={{height:'50%', margin: '5px'}}><TradingViewWidgetFTX /></div>
+        <div style={{height:'50%', marginBottom: '20px'}}><UserInfoTable /></div>
       </Col>
       <Col flex={'360px'} style={{ height: '100%' }}>
         <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
@@ -350,7 +352,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
           height: '800px',
         }}
       >
-        <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
+        <Col flex="auto" style={{overflow:'hidden', width:'50px', height: '100%',display: 'flex' }}>
           <Orderbook
             smallScreen={true}
             depth={13}
@@ -358,8 +360,9 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
             onSize={onSize}
           />
         </Col>
-        <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
-          <TradesTable smallScreen={true} />
+        <Col flex="auto" style={{ overflow:'hidden',height: '100%', display: 'flex', flexDirection: 'column'}}>
+          <div style={{height:'60%', margin: '5px'}}><TradingViewWidgetFTX /></div>
+          <div style={{height:'40%'}}><TradesTable smallScreen={true}/></div>
         </Col>
         <Col
           flex="400px"
@@ -395,6 +398,9 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         }}
       >
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
+          <TradingViewWidgetFTX /> 
+        </Col>
+        <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}> 
           <Orderbook smallScreen={true} onPrice={onPrice} onSize={onSize} />
         </Col>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
@@ -409,3 +415,5 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
     </>
   );
 };
+
+
