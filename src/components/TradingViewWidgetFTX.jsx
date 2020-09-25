@@ -13,7 +13,7 @@ export default function TradingViewWidgetFTX (){
       theme={Themes.DARK}
       locale='en'
       autosize
-      range='MTD'
+      range='14D'
       interval='4H'
     />); 
 
