@@ -22,6 +22,7 @@ import {
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 import TradingViewWidgetFTX from '../components/TradingViewWidgetFTX';
+import {cryptoName} from '../utils/coin-name'
 
 const { Option, OptGroup } = Select;
 var currentMarketName = 'ETH/USDT';
@@ -285,7 +286,10 @@ function MarketSelector({
               ? 1
               : 0,
           )
-          .map(({ address, name, deprecated }, i) => (
+          .map(({ address, name, deprecated }, i) =>  {
+            const base = extractBase(name).toString();
+            const coinNameList = cryptoName(); 
+            return (
             <Option
               value={address.toBase58()}
               key={address}
@@ -295,9 +299,16 @@ function MarketSelector({
                 backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
               }}
             >
-              {name} {deprecated ? ' (Deprecated)' : null}
-            </Option>
-          ))}
+              <div>
+                <img  style={{width:'20px',height:'20px',verticalAlign: 'sub', marginRight:'5px'}}
+                src={coinNameList.hasOwnProperty(base) ? coinNameList[base].iconUrl : ''} 
+                />
+                <span>{name} {deprecated ? ' (Deprecated)' : null}</span>
+               </div>
+               
+            </Option>)
+          }
+          )}
       </OptGroup>
     </Select>
   );
