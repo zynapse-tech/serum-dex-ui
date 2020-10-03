@@ -21,7 +21,7 @@ import {
 } from '@ant-design/icons';
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
-import TradingViewWidgetFTX from '../components/TradingViewWidgetFTX';
+import TradingView from '../components/TradingView';
 import {cryptoName} from '../utils/coin-name'
 
 const { Option, OptGroup } = Select;
@@ -337,7 +337,7 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
       }}
     >
       <Col flex="auto" style={{display: 'flex', flexDirection: 'column' }}>
-        <div style={{height:'50%', margin: '5px'}}><TradingViewWidgetFTX /></div>
+        <div style={{height:'50%', margin: '5px'}}><TradingView /></div>
         <div style={{height:'50%', marginBottom: '20px'}}><UserInfoTable /></div>
       </Col>
       <Col flex={'360px'} style={{ height: '100%' }}>
@@ -372,7 +372,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
           />
         </Col>
         <Col flex="auto" style={{ overflow:'hidden',height: '100%', display: 'flex', flexDirection: 'column'}}>
-          <div style={{height:'60%', margin: '5px'}}><TradingViewWidgetFTX /></div>
+          <div style={{height:'60%', margin: '5px'}}><TradingView /></div>
           <div style={{height:'40%'}}><TradesTable smallScreen={true}/></div>
         </Col>
         <Col
@@ -409,7 +409,7 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         }}
       >
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
-          <TradingViewWidgetFTX /> 
+          <TradingView /> 
         </Col>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}> 
           <Orderbook smallScreen={true} onPrice={onPrice} onSize={onSize} />
