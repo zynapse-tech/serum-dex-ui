@@ -62,6 +62,7 @@ export default function TopBar() {
         }}
       >
         <Menu.Item key="/">TRADE</Menu.Item>
+        <Menu.Item key="/how-to-trade">How to trade?</Menu.Item>
       </Menu>
       <div>
         <Select

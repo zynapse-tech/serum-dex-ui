@@ -5,6 +5,7 @@ import React from 'react';
 import BalancesPage from './pages/BalancesPage';
 import BasicLayout from './components/BasicLayout';
 import ListNewMarketPage from './pages/ListNewMarketPage';
+import HowToTradePage from './pages/HowToTradePage';
 
 export function Routes() {
   return (
@@ -17,6 +18,7 @@ export function Routes() {
           <ListNewMarketPage />
         </BasicLayout>
       </Route>
+      <Route exact path="/how-to-trade" component={HowToTradePageContents} />
     </HashRouter>
   );
 }
@@ -41,6 +43,14 @@ function BalancesPageContents() {
   return (
     <BasicLayout>
       <BalancesPage />
+    </BasicLayout>
+  );
+}
+
+function HowToTradePageContents() {
+  return (
+    <BasicLayout>
+      <HowToTradePage />
     </BasicLayout>
   );
 }
