@@ -9,7 +9,8 @@ export default function SolanaBloackExplorer() {
       style={{
       height: '100vh',  
       width:'100%',    
-      background:'#000000'}}
+      background:'#000000',
+      borderWidth: 'inherit'}}
       />  
   );
 }

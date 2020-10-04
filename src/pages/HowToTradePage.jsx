@@ -10,7 +10,8 @@ export default function HowToTradePage() {
       style={{
       height: '100vh',  
       width:'100%',    
-      background:'#ffffff'}}
+      background:'#ffffff',
+      borderWidth: 'inherit'}}
       />  
   );
 }
