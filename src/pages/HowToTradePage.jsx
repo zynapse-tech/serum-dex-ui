@@ -11,7 +11,7 @@ export default function HowToTradePage() {
       height: '100vh',  
       width:'102%',    
       background:'#ffffff',
-      borderWidth: 'inherit'}}
+      borderWidth: '0px'}}
       />  
   );
 }

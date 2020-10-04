@@ -10,7 +10,7 @@ export default function SolanaDashboard() {
       height: '100vh',  
       width:'102%',    
       background:'#000000',
-      borderWidth: 'inherit'}} 
+      borderWidth: '0px'}} 
       />  
   );
 }
