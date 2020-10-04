@@ -35,7 +35,7 @@ export function cryptoName(){
         },
         CREAM : {
             name : 'CREAM',
-            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/6193.png'
+            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/32x32/6193.png'
         },
         FRONT : {
             name : 'FRONT',
