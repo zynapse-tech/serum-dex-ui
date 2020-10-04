@@ -22,7 +22,7 @@ import {
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 import TradingView from '../components/TradingView';
-import {cryptoName} from '../utils/coin-name'
+import {cryptoName} from '../utils/coin-name';
 
 const { Option, OptGroup } = Select;
 var currentMarketName = 'ETH/USDT';

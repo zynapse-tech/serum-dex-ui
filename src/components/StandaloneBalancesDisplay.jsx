@@ -15,6 +15,7 @@ import Link from './Link';
 import { settleFunds } from '../utils/send';
 import { useSendConnection } from '../utils/connection';
 import { notify } from '../utils/notifications';
+import {cryptoName} from '../utils/coin-name';
 
 const RowBox = styled(Row)`
   padding-bottom: 20px;
@@ -63,7 +64,7 @@ export default function StandaloneBalancesDisplay() {
       });
     }
   }
-
+  const coinNameList = cryptoName(); 
   return (
     <FloatingElement style={{ flex: 1, paddingTop: 10, marginBottom: 0 }}>
       {[
@@ -71,7 +72,15 @@ export default function StandaloneBalancesDisplay() {
         [quoteCurrency, quoteCurrencyBalances, 'quote'],
       ].map(([currency, balances, baseOrQuote], index) => (
         <React.Fragment key={index}>
-          <Divider style={{ borderColor: 'white' }}>{currency}</Divider>
+          <Divider style={{ borderColor: 'white' }}>
+            {coinNameList?.hasOwnProperty(currency) &&
+              <img  style={{width:'20px',height:'20px',verticalAlign: 'sub', marginRight:'5px'}}
+              src={coinNameList?.hasOwnProperty(currency) ? coinNameList[currency].iconUrl : 'Error.src'}  
+              onerror="this.style.display='none'"
+              />
+            }
+           
+          {currency}</Divider>
           <RowBox
             align="middle"
             justify="space-between"
