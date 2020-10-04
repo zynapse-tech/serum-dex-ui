@@ -6,6 +6,8 @@ import BalancesPage from './pages/BalancesPage';
 import BasicLayout from './components/BasicLayout';
 import ListNewMarketPage from './pages/ListNewMarketPage';
 import HowToTradePage from './pages/HowToTradePage';
+import SolanaBloackExplorerPage from './pages/SolanaBloackExplorerPage';
+import SolanaDashboardPage from './pages/SolanaDashboardPage';
 
 export function Routes() {
   return (
@@ -19,6 +21,8 @@ export function Routes() {
         </BasicLayout>
       </Route>
       <Route exact path="/how-to-trade" component={HowToTradePageContents} />
+      <Route exact path="/solana-dashboard" component={SolanaDashboardPageContents} />
+      <Route exact path="/solana-explorer" component={SolanaBloackExplorerPageContents} />
     </HashRouter>
   );
 }
@@ -51,6 +55,23 @@ function HowToTradePageContents() {
   return (
     <BasicLayout>
       <HowToTradePage />
+    </BasicLayout>
+  );
+}
+
+
+function SolanaBloackExplorerPageContents() {
+  return (
+    <BasicLayout>
+      <SolanaBloackExplorerPage />
+    </BasicLayout>
+  );
+}
+
+function SolanaDashboardPageContents() {
+  return (
+    <BasicLayout>
+      <SolanaDashboardPage />
     </BasicLayout>
   );
 }

@@ -62,6 +62,8 @@ export default function TopBar() {
         }}
       >
         <Menu.Item key="/">TRADE</Menu.Item>
+        <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>
+        <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>
         <Menu.Item key="/how-to-trade">How to trade?</Menu.Item>
       </Menu>
       <div>

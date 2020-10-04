@@ -1,16 +1,15 @@
 import React from 'react'; 
 import styled from 'styled-components';
 
-export default function HowToTradePage() {
+export default function SolanaBloackExplorer() {
  
-
   return (
      
-      <iframe src='https://serum-academy.com/en/serum-dex/sol-wallet/' 
+      <iframe src='https://explorer.solana.com/' 
       style={{
       height: '100vh',  
       width:'100%',    
-      background:'#ffffff'}}
+      background:'#000000'}}
       />  
   );
 }
