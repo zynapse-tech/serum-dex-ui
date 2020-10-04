@@ -15,6 +15,8 @@ const footerElements = [
   { description: 'GitHub', link: helpUrls.github },
   { description: 'Project Serum', link: helpUrls.projectSerum },
   { description: 'Solana Network', link: helpUrls.solanaBeach },
+  { description: 'Twitter', link: helpUrls.twitter },
+  { description: 'Facebook', link: helpUrls.facebook },
 ];
 
 export const CustomFooter = () => {
