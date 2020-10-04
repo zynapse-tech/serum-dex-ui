@@ -9,7 +9,7 @@ export default function HowToTradePage() {
       <iframe src='https://serum-academy.com/en/serum-dex/sol-wallet/' 
       style={{
       height: '100vh',  
-      width:'100%',    
+      width:'102%',    
       background:'#ffffff',
       borderWidth: 'inherit'}}
       />  

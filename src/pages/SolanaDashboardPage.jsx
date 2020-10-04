@@ -8,7 +8,7 @@ export default function SolanaDashboard() {
       <iframe src='https://solanabeach.io/#/' 
       style={{
       height: '100vh',  
-      width:'100%',    
+      width:'102%',    
       background:'#000000',
       borderWidth: 'inherit'}} 
       />  

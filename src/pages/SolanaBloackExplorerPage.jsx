@@ -8,7 +8,7 @@ export default function SolanaBloackExplorer() {
       <iframe src='https://explorer.solana.com/' 
       style={{
       height: '100vh',  
-      width:'100%',    
+      width:'102%',    
       background:'#000000',
       borderWidth: 'inherit'}}
       />  
