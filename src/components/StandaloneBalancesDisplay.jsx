@@ -80,7 +80,7 @@ export default function StandaloneBalancesDisplay() {
               />
             }
            
-          {currency}</Divider>
+          {currency ? currency : '*'}</Divider>
           <RowBox
             align="middle"
             justify="space-between"

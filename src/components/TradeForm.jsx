@@ -184,7 +184,7 @@ export default function TradeForm({ style, setChangeOrderRef }) {
 
   return (
     <FloatingElement
-      style={{ display: 'flex', flexDirection: 'column', paddingBottom:'5px', ...style }}
+      style={{ height:'auto', paddingBottom:'5px', ...style }}
     >
   
       <div style={{ flex: 1 }}>
