@@ -184,8 +184,9 @@ export default function TradeForm({ style, setChangeOrderRef }) {
 
   return (
     <FloatingElement
-      style={{ display: 'flex', flexDirection: 'column', ...style }}
+      style={{ display: 'flex', flexDirection: 'column', paddingBottom:'5px', ...style }}
     >
+  
       <div style={{ flex: 1 }}>
         <Radio.Group
           onChange={(e) => setSide(e.target.value)}
@@ -295,6 +296,10 @@ export default function TradeForm({ style, setChangeOrderRef }) {
           Sell {baseCurrency}
         </SellButton>
       )}
+      <div style={{marginTop:'5px'}}><a href="https://serum-academy.com/en/serum-dex/sol-wallet/" target="_blank"
+       style={{fontSize:'smaller'}}>How to trade?</a>
+       </div>
+      
     </FloatingElement>
   );
 }
