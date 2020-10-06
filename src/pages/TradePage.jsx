@@ -219,7 +219,7 @@ function MarketSelector({
     ?.address?.toBase58();
  
   var { pair } = useParams();
-  pair = pair == null ?  null : pair.toString().replace('_','/');
+  pair = pair == null ?  null : pair.toString().replace('_','/').toUpperCase();
    
   if(pair != null){
       selectedMarket = markets
