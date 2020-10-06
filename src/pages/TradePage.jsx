@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom'; 
 import { Col, Popover, Row, Select, Typography, Button } from 'antd';
 import styled from 'styled-components';
 import Orderbook from '../components/Orderbook';
@@ -23,6 +24,7 @@ import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 import TradingView from '../components/TradingView';
 import {cryptoName} from '../utils/coin-name';
+
 
 const { Option, OptGroup } = Select;
 var currentMarketName = 'ETH/USDT';
@@ -54,13 +56,13 @@ export default function TradePage() {
     height: window.innerHeight,
     width: window.innerWidth,
   });
-
+  
   useEffect(() => {
     document.title = marketName ? `Serum DEX :: ${marketName}` : 'Serum DEX';
   }, [marketName]);
 
   const changeOrderRef = useRef();
-
+  
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
@@ -193,9 +195,9 @@ function MarketSelector({
   onDeleteCustomMarket,
 }) {
   const { market, setMarketAddress } = useMarket();
-
+  const history = useHistory();
   const onSetMarketAddress = (marketAddress) => {
-
+    history.replace('/')
     currentMarketName = markets
     .find(
       (proposedMarket) =>
@@ -216,13 +218,39 @@ function MarketSelector({
     )
     ?.address?.toBase58();
  
-  if(selectedMarket == null){
-    selectedMarket = markets
-    .find(
-      (proposedMarket) =>
-        proposedMarket.name == currentMarketName,
-    )
-    ?.address?.toBase58();
+  var { pair } = useParams();
+  pair = pair == null ?  null : pair.toString().replace('_','/');
+   
+  if(pair != null){
+      selectedMarket = markets
+      .find(
+        (proposedMarket) =>
+          proposedMarket.name == pair,
+      )
+      ?.address?.toBase58();
+
+      if(selectedMarket != null){
+        onSetMarketAddress(selectedMarket);
+      }else{ 
+        history.replace('/');
+        if(selectedMarket == null){
+          selectedMarket = markets
+          .find(
+            (proposedMarket) =>
+              proposedMarket.name == currentMarketName,
+          )
+          ?.address?.toBase58();
+        }
+      } 
+  }else{
+    if(selectedMarket == null){
+      selectedMarket = markets
+      .find(
+        (proposedMarket) =>
+          proposedMarket.name == currentMarketName,
+      )
+      ?.address?.toBase58();
+    }
   }
 
   return (
