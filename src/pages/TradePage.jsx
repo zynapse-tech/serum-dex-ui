@@ -399,9 +399,9 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
             onSize={onSize}
           />
         </Col>
-        <Col   style={{ overflow:'hidden',flex: '1.5', flexDirection: 'column'}}>
-          <div style={{height:'60%', margin: '5px'}}><TradingView /></div>
-          <div style={{height:'40%'}}><TradesTable smallScreen={true}/></div>
+        <Col   style={{ overflow:'hidden',flex: '1.5', flexDirection: 'column',display:'flex'}}>
+          <div style={{flex:'1', margin: '5px'}}><TradingView /></div>
+          <div style={{height:'300px'}}><TradesTable smallScreen={true}/></div>
         </Col>
         <Col
           style={{ flex: '1', flexDirection: 'column',overflow:'hidden' }}
