@@ -96,11 +96,12 @@ export default function TradePage() {
       );
     } else if (width < 1000) {
       return <RenderSmaller {...componentProps} />;
-    } else if (width < 1450) {
-      return <RenderSmall {...componentProps} />;
     } else {
-      return <RenderNormal {...componentProps} />;
-    }
+      return <RenderSmall {...componentProps} />;
+    } 
+    // else {
+    //   return <RenderNormal {...componentProps} />;
+    // }
   }, [width, componentProps, handleDeprecated]);
 
   const onAddCustomMarket = (customMarket) => {
@@ -387,25 +388,23 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
       <Row
-        style={{
-          height: '800px',
-        }}
+        style={{ display:'flex'}}
       >
-        <Col flex="auto" style={{overflow:'hidden', width:'50px', height: '100%',display: 'flex' }}>
+        <Col style={{overflow:'hidden',flex: '0.7' }}>
           <Orderbook
+            style={{height:'100%'}}
             smallScreen={true}
             depth={13}
             onPrice={onPrice}
             onSize={onSize}
           />
         </Col>
-        <Col flex="auto" style={{ overflow:'hidden',height: '100%', display: 'flex', flexDirection: 'column'}}>
+        <Col   style={{ overflow:'hidden',flex: '1.5', flexDirection: 'column'}}>
           <div style={{height:'60%', margin: '5px'}}><TradingView /></div>
           <div style={{height:'40%'}}><TradesTable smallScreen={true}/></div>
         </Col>
         <Col
-          flex="400px"
-          style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+          style={{ flex: '1', flexDirection: 'column',overflow:'hidden' }}
         >
           <TradeForm setChangeOrderRef={onChangeOrderRef} />
           <StandaloneBalancesDisplay />
@@ -427,17 +426,11 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradeForm style={{ flex: 1 }} setChangeOrderRef={onChangeOrderRef} />
         </Col>
-        <Col xs={24} sm={12}>
-          <StandaloneBalancesDisplay />
-        </Col>
-      </Row>
-      <Row
-        style={{
-          height: '500px',
-        }}
-      >
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
-          <TradingView /> 
+          <StandaloneBalancesDisplay />
+        </Col> 
+        <Col xs={24} sm={12} style={{ height: '300px', display: 'flex' }}>
+          <TradingView style={{ height: '100%', display: 'flex' }}/> 
         </Col>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}> 
           <Orderbook smallScreen={true} onPrice={onPrice} onSize={onSize} />
@@ -445,8 +438,6 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradesTable smallScreen={true} />
         </Col>
-      </Row>
-      <Row>
         <Col flex="auto">
           <UserInfoTable />
         </Col>
