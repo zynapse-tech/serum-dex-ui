@@ -84,6 +84,10 @@ export function cryptoName(){
         HXRO : {
             name : 'HXRO',
             iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/3748.png'
+        } ,
+        KEEP : {
+            name : 'KEEP',
+            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/5566.png'
         }
     }
   
