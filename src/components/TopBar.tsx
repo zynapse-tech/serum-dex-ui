@@ -162,11 +162,11 @@ export default function TopBar() {
                 Developer resources
               </a>
             </Menu.Item>
-            <Menu.Item key="/explorer">
+            {/* <Menu.Item key="/explorer">
               <a href={EXTERNAL_LINKS['/explorer']} target="_blank" rel="noopener noreferrer">
                 Solana block explorer
               </a>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="/srm-faq">
               <a href={EXTERNAL_LINKS['/srm-faq']} target="_blank" rel="noopener noreferrer">
                 SRM FAQ
