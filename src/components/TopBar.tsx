@@ -1,17 +1,17 @@
-import {InfoCircleOutlined, PlusCircleOutlined, SettingOutlined, UserOutlined,} from '@ant-design/icons';
-import {Button, Col, Menu, Popover, Row, Select} from 'antd';
-import React, {useCallback, useEffect, useState} from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
+import { InfoCircleOutlined, PlusCircleOutlined, SettingOutlined, UserOutlined, } from '@ant-design/icons';
+import { Button, Col, Menu, Popover, Row, Select } from 'antd';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import styled from 'styled-components';
-import {useWallet, WALLET_PROVIDERS} from '../utils/wallet';
-import {ENDPOINTS, useConnectionConfig} from '../utils/connection';
+import { useWallet, WALLET_PROVIDERS } from '../utils/wallet';
+import { ENDPOINTS, useConnectionConfig } from '../utils/connection';
 import LinkAddress from './LinkAddress';
 import Settings from './Settings';
 import CustomClusterEndpointDialog from "./CustomClusterEndpointDialog";
-import {EndpointInfo} from "../utils/types";
-import {notify} from "../utils/notifications";
-import {Connection} from "@solana/web3.js";
+import { EndpointInfo } from "../utils/types";
+import { notify } from "../utils/notifications";
+import { Connection } from "@solana/web3.js";
 
 const Wrapper = styled.div`
   background-color: #0d1017;
@@ -46,8 +46,8 @@ const EXTERNAL_LINKS = {
 export default function TopBar() {
   const { connected, wallet, providerUrl, setProvider } = useWallet();
   const { endpoint, endpointInfo, setEndpoint, availableEndpoints, setCustomEndpoints } = useConnectionConfig();
-  const [ addEndpointVisible, setAddEndpointVisible ] = useState(false)
-  const [ testingConnection, setTestingConnection] = useState(false)
+  const [addEndpointVisible, setAddEndpointVisible] = useState(false)
+  const [testingConnection, setTestingConnection] = useState(false)
   const location = useLocation();
   const history = useHistory();
 
@@ -118,8 +118,8 @@ export default function TopBar() {
         onClose={() => setAddEndpointVisible(false)}
       />
       <Wrapper>
-        <LogoWrapper>
-          <img src={logo} alt="" onClick={() => history.push('/')} />
+        <LogoWrapper onClick={() => history.push('/')}>
+          <img src={logo} alt=""/>
           {'SERUM'}
         </LogoWrapper>
         <Menu
@@ -134,10 +134,14 @@ export default function TopBar() {
             flex: 1,
           }}
         >
-          <Menu.Item key="/">TRADE</Menu.Item>
-          <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>
-          <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>
-          {/* <Menu.SubMenu title="LEARN" onTitleClick={() => window.open(EXTERNAL_LINKS['/learn'], '_blank')}>
+          <Menu.Item key="/">Trade</Menu.Item>
+          {connected && <Menu.Item key="/balances">Balances</Menu.Item>}
+          {connected && <Menu.Item key="/orders">Orders</Menu.Item>}
+          {!connected && <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>}
+          {!connected && <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>}
+          {<Menu.SubMenu title="Learn" onTitleClick={() => window.open(EXTERNAL_LINKS['/learn'], '_blank')}>
+            {connected && <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>}
+            {connected && <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>}
             <Menu.Item key="/add-market">
               <a href={EXTERNAL_LINKS['/add-market']} target="_blank" rel="noopener noreferrer">
                 Adding a market
@@ -168,7 +172,7 @@ export default function TopBar() {
                 SRM FAQ
               </a>
             </Menu.Item>
-          </Menu.SubMenu> */}
+          </Menu.SubMenu>}
         </Menu>
         <div>
           <Row
@@ -182,7 +186,7 @@ export default function TopBar() {
                 onClick={() => setAddEndpointVisible(true)}
               />
             </Col>
-             <Col>
+            <Col>
               <Popover
                 content={endpoint}
                 placement="bottomRight"
