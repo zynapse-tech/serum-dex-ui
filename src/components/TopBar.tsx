@@ -9,10 +9,10 @@ import { ENDPOINTS, useConnectionConfig } from '../utils/connection';
 import LinkAddress from './LinkAddress';
 import Settings from './Settings';
 import CustomClusterEndpointDialog from "./CustomClusterEndpointDialog";
-import { EndpointInfo } from "../utils/types";
-import { notify } from "../utils/notifications";
-import { Connection } from "@solana/web3.js"; 
-import WalletConnect from "./WalletConnect"; 
+import {EndpointInfo} from "../utils/types";
+import {notify} from "../utils/notifications";
+import {Connection} from "@solana/web3.js";
+import WalletConnect from './WalletConnect';
 
 const Wrapper = styled.div`
   background-color: #0d1017;
@@ -137,6 +137,7 @@ export default function TopBar() {
           {connected && <Menu.Item key="/convert">Convert</Menu.Item>}
           {connected && <Menu.Item key="/balances">Balances</Menu.Item>}
           {connected && <Menu.Item key="/orders">Orders</Menu.Item>}
+          {connected && <Menu.Item key="/list-new-market">Add Market</Menu.Item>}
           {!connected && <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>}
           {!connected && <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>}
           {<Menu.SubMenu title="Learn" onTitleClick={() => window.open(EXTERNAL_LINKS['/learn'], '_blank')}>
@@ -228,7 +229,7 @@ export default function TopBar() {
           </div>
         )}
         <div>
-          <Select onSelect={setProvider} value={providerUrl}>
+          <Select onSelect={setProvider} value={providerUrl} style={{display:"none"}}>
             {WALLET_PROVIDERS.map(({ name, url }) => (
               <Select.Option value={url} key={url}>
                 {name}
