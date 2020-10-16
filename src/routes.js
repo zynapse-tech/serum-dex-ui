@@ -3,6 +3,7 @@ import TradePage from './pages/TradePage';
 import OpenOrdersPage from './pages/OpenOrdersPage';
 import React from 'react';
 import BalancesPage from './pages/BalancesPage';
+import ConvertPage from './pages/ConvertPage';
 import BasicLayout from './components/BasicLayout';
 import ListNewMarketPage from './pages/ListNewMarketPage';
 import HowToTradePage from './pages/HowToTradePage';
@@ -16,6 +17,7 @@ export function Routes() {
       <Route exact path="/trade/:pair" component={TradePageContents} />
       <Route exact path="/orders" component={OpenOrdersPageContents} />
       <Route exact path="/balances" component={BalancesPageContents} />
+      <Route exact path="/convert" component={ConvertPageContents} />
       <Route exact path="/list-new-market">
         <BasicLayout>
           <ListNewMarketPage />
@@ -76,3 +78,11 @@ function SolanaDashboardPageContents() {
     </BasicLayout>
   );
 }
+ 
+function ConvertPageContents() {
+  return (
+    <BasicLayout>
+      <ConvertPage />
+    </BasicLayout>
+  );
+} 

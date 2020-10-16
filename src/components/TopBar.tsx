@@ -11,7 +11,8 @@ import Settings from './Settings';
 import CustomClusterEndpointDialog from "./CustomClusterEndpointDialog";
 import { EndpointInfo } from "../utils/types";
 import { notify } from "../utils/notifications";
-import { Connection } from "@solana/web3.js";
+import { Connection } from "@solana/web3.js"; 
+import WalletConnect from "./WalletConnect"; 
 
 const Wrapper = styled.div`
   background-color: #0d1017;
@@ -50,8 +51,6 @@ export default function TopBar() {
   const [testingConnection, setTestingConnection] = useState(false)
   const location = useLocation();
   const history = useHistory();
-
-  const publicKey = wallet?.publicKey?.toBase58();
 
   const handleClick = useCallback(
     (e) => {
@@ -133,8 +132,9 @@ export default function TopBar() {
             alignItems: 'flex-end',
             flex: 1,
           }}
-        >
+        > 
           <Menu.Item key="/">Trade</Menu.Item>
+          {connected && <Menu.Item key="/convert">Convert</Menu.Item>}
           {connected && <Menu.Item key="/balances">Balances</Menu.Item>}
           {connected && <Menu.Item key="/orders">Orders</Menu.Item>}
           {!connected && <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>}
@@ -142,6 +142,7 @@ export default function TopBar() {
           {<Menu.SubMenu title="Learn" onTitleClick={() => window.open(EXTERNAL_LINKS['/learn'], '_blank')}>
             {connected && <Menu.Item key="/solana-explorer">Solana Explorer</Menu.Item>}
             {connected && <Menu.Item key="/solana-dashboard">Solana Dashboard</Menu.Item>}
+ 
             <Menu.Item key="/add-market">
               <a href={EXTERNAL_LINKS['/add-market']} target="_blank" rel="noopener noreferrer">
                 Adding a market
@@ -236,25 +237,7 @@ export default function TopBar() {
           </Select>
         </div>
         <div>
-          <Button
-            type="text"
-            size="large"
-            onClick={connected ? wallet.disconnect : wallet.connect}
-            style={{ color: '#2abdd2' }}
-          >
-            <UserOutlined />
-            {!connected ? 'Connect wallet' : 'Disconnect'}
-          </Button>
-          {connected && (
-            <Popover
-              content={<LinkAddress address={publicKey} />}
-              placement="bottomRight"
-              title="Wallet public key"
-              trigger="click"
-            >
-              <InfoCircleOutlined style={{ color: '#2abdd2' }} />
-            </Popover>
-          )}
+          <WalletConnect/>
         </div>
       </Wrapper>
     </>
