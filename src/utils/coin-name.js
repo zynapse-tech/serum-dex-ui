@@ -88,7 +88,12 @@ export function cryptoName(){
         KEEP : {
             name : 'KEEP',
             iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/5566.png'
+        },
+        MATH : {
+            name : 'MATH',
+            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/5616.png'
         }
+        
     }
   
 };
