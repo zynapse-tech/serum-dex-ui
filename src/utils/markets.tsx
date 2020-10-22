@@ -720,8 +720,8 @@ export function useAllOpenOrdersBalances() {
   } = {};
   for (let account of openOrdersAccounts || []) {
     const marketInfo = marketsByAddress[account.market.toBase58()];
-    const baseMint = marketInfo.market.baseMintAddress.toBase58();
-    const quoteMint = marketInfo.market.quoteMintAddress.toBase58();
+    const baseMint = marketInfo?.market.baseMintAddress.toBase58();
+    const quoteMint = marketInfo?.market.quoteMintAddress.toBase58();
     if (!(baseMint in openOrdersBalances)) {
       openOrdersBalances[baseMint] = [];
     }
@@ -749,12 +749,12 @@ export function useAllOpenOrdersBalances() {
     );
 
     openOrdersBalances[baseMint].push({
-      market: marketInfo.market.publicKey,
+      market: account.market,
       free: baseFree,
       total: baseTotal,
     });
     openOrdersBalances[quoteMint].push({
-      market: marketInfo.market.publicKey,
+      market: account.market,
       free: quoteFree,
       total: quoteTotal,
     });
@@ -1188,8 +1188,8 @@ export function getExpectedFillPrice(
   cost: number,
   tickSizeDecimals?: number,
 ) {
-  let spentCost = 0.;
-  let avgPrice = 0.;
+  let spentCost = 0;
+  let avgPrice = 0;
   let price, sizeAtLevel, costAtLevel: number;
   for ([price, sizeAtLevel] of orderbook.getL2(1000)) {
     costAtLevel = (orderbook.isBids ? 1 : price) * sizeAtLevel;

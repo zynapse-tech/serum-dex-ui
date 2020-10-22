@@ -61,7 +61,9 @@ export default function TradePage() {
     document.title = marketName ? `Serum DEX :: ${marketName}` : 'Serum DEX';
   }, [marketName]);
 
-  const changeOrderRef = useRef<({ size, price }: {size?: number; price?: number;}) => void>();
+  const changeOrderRef = useRef<
+    ({ size, price }: { size?: number; price?: number }) => void
+  >();
 
   useEffect(() => {
     const handleResize = () => {
