@@ -92,7 +92,15 @@ export function cryptoName(){
         MATH : {
             name : 'MATH',
             iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/5616.png'
-        }
+        },
+        LUA : {
+            name : 'LUA',
+            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/7216.png'
+        },
+        TOMO : {
+            name : 'TOMO',
+            iconUrl : 'https://s2.coinmarketcap.com/static/img/coins/64x64/2570.png'
+        },
         
     }
   
