@@ -1,4 +1,4 @@
-import { Button, Col, Divider, Row } from 'antd';
+import {Button, Col, Divider, Popover, Row } from 'antd';
 import React, { useState } from 'react';
 import FloatingElement from './layout/FloatingElement';
 import styled from 'styled-components';
@@ -18,6 +18,8 @@ import { useSendConnection } from '../utils/connection';
 import { notify } from '../utils/notifications';
 import { Balances } from '../utils/types';
 import StandaloneTokenAccountsSelect from './StandaloneTokenAccountSelect';
+import LinkAddress from "./LinkAddress";
+import {InfoCircleOutlined} from "@ant-design/icons";
 
 import { cryptoName } from '../utils/coin-name';
 
@@ -145,13 +147,24 @@ export default function StandaloneBalancesDisplay() {
       {formattedBalances.map(
         ([currency, balances, baseOrQuote, mint], index) => (
           <React.Fragment key={index}>
-              <Divider style={{ borderColor: 'white' }}> 
+            <Divider style={{ borderColor: 'white' }}>
             { 
             coinNameList?.hasOwnProperty(currency ? currency : '') &&
               <img style={{ width: '20px', height: '20px', verticalAlign: 'sub', marginRight: '5px' }}
                 src={coinNameList?.hasOwnProperty(currency? currency : '') ? coinNameList[currency].iconUrl : 'Error.src'}
               />
-            }{currency ? currency : '*'}</Divider>
+            }{currency ? currency : '*'}{" "}
+              {mint && (
+                <Popover
+                  content={<LinkAddress address={mint} />}
+                  placement="bottomRight"
+                  title="Token mint"
+                  trigger="hover"
+                >
+                  <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                </Popover>
+              )}
+            </Divider>
             {connected && (
               <RowBox align="middle" style={{ paddingBottom: 10 }}>
                 <StandaloneTokenAccountsSelect
