@@ -16,6 +16,7 @@ import { EndpointInfo } from '../utils/types';
 import { notify } from '../utils/notifications';
 import { Connection } from '@solana/web3.js';
 import WalletConnect from './WalletConnect';
+import AppSearch from './AppSearch';
 
 const Wrapper = styled.div`
   background-color: #0d1017;
@@ -45,7 +46,7 @@ const EXTERNAL_LINKS = {
   '/developer-resources': 'https://serum-academy.com/en/developer-resources/',
   '/explorer': 'https://explorer.solana.com',
   '/srm-faq': 'https://projectserum.com/srm-faq',
-  '/swap': 'https://swap.projectserum.com'
+  '/swap': 'https://swap.projectserum.com',
 };
 
 export default function TopBar() {
@@ -61,6 +62,7 @@ export default function TopBar() {
   const [testingConnection, setTestingConnection] = useState(false);
   const location = useLocation();
   const history = useHistory();
+  const [searchFocussed, setSearchFocussed] = useState(false);
 
   const handleClick = useCallback(
     (e) => {
@@ -133,7 +135,7 @@ export default function TopBar() {
         onClose={() => setAddEndpointVisible(false)}
       />
       <Wrapper>
-        <LogoWrapper onClick={() => history.push('/')}>
+        <LogoWrapper onClick={() => history.push('/')} >
           <img src={logo} alt=""/>
           {'SERUM'}
         </LogoWrapper>
@@ -221,6 +223,20 @@ export default function TopBar() {
             </Menu.Item>
           </Menu.SubMenu>}
         </Menu>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            paddingRight: 5,
+          }}
+        >
+          {/* <AppSearch
+            onFocus={() => setSearchFocussed(true)}
+            onBlur={() => setSearchFocussed(false)}
+            focussed={searchFocussed}
+            width={searchFocussed ? "350px" : "35px"}
+          /> */}
+        </div>
         <div>
           <Row
             align="middle"
